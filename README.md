@@ -94,12 +94,20 @@ superpowers-hermes/
 
 ## Usage
 
-Start a new project or open an existing one. Hermes will auto-load `HERMES.md` from the workspace root. Then, whenever you:
+Start a new project or open an existing one. Hermes will auto-load `HERMES.md` from the workspace root. Then, whenever a skill's `description` matches the current task context, it auto-loads into the session. This is probabilistic matching — not guaranteed. If a skill doesn't load, pull it manually:
 
-- Say "Let's build X" → `brainstorming` auto-triggers
-- Say "How should I implement this?" → `writing-plans` auto-triggers
-- Start writing code → `test-driven-development` auto-triggers
-- Finish implementation → `verification-before-completion` auto-triggers
+```python
+skill_view(name='superpowers:brainstorming')
+```
+
+Typical triggers (matching quality depends on description overlap):
+
+| Session start phrase | Skills likely to load |
+|---------------------|---------------------|
+| "Let's build X" | `brainstorming` → `writing-plans` |
+| "How do I fix this?" | `systematic-debugging` |
+| "Write tests for this" | `test-driven-development` |
+| "Review my code" | `requesting-code-review` |
 
 ## Credits
 
